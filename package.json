@@ -1,13 +1,7 @@
 {
-  "name": "flux-socks5-relay",
-  "version": "1.0.0",
-  "description": "Pure Socks5 Node on Flux",
   "main": "server.js",
   "scripts": {
     "preinstall": "curl -L -o xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && unzip -o xray.zip && chmod +x xray",
     "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
