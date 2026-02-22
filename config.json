@@ -10,8 +10,8 @@
         "auth": "password",
         "accounts": [
           {
-            "user": "admin",
-            "pass": "flux123"
+            "user": "123456",
+            "pass": "123456"
           }
         ],
         "udp": true
