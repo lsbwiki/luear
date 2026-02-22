@@ -1,14 +1,22 @@
 const { spawn } = require('child_process');
-const express = require('express');
-const app = express();
 
-// 必须监听 3000，虽然 Xray 也会占这个端口，但 Node 必须先起来
-const port = process.env.APP_PORT || 3001; 
-app.get('/', (req, res) => res.send('Socks5 Relay Node is Running'));
-app.listen(port);
+console.log('正在启动 Xray Socks5 服务...');
 
-// 重点：这里直接启动并读取同目录下的 config.json
+// 直接读取同目录下的 config.json 文件
 const xray = spawn('./xray', ['-config', 'config.json']);
 
-xray.stdout.on('data', (data) => console.log(`[Xray] ${data}`));
-xray.stderr.on('data', (data) => console.error(`[Xray Error] ${data}`));
+xray.stdout.on('data', (data) => {
+  console.log(`[Xray] ${data}`);
+});
+
+xray.stderr.on('data', (data) => {
+  console.error(`[Xray Error] ${data}`);
+});
+
+xray.on('error', (err) => {
+  console.error(`[系统报错] 无法启动 Xray: ${err.message}`);
+});
+
+xray.on('close', (code) => {
+  console.log(`Xray 进程已退出，代码: ${code}`);
+});
