@@ -1,0 +1,13 @@
+{
+    "name": "flux-vless-web",
+    "version": "1.0.0",
+    "description": "VLESS on Flux with Web Link Generator",
+    "main": "server.js",
+    "scripts": {
+      "preinstall": "curl -L -H 'Cache-Control: no-cache' -o xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && unzip -o xray.zip xray && rm xray.zip && chmod +x xray",
+      "start": "node server.js"
+    },
+    "engines": {
+      "node": ">=18.0.0"
+    }
+  }
